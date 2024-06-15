@@ -7,7 +7,7 @@ import { CgProfile } from "react-icons/cg";
 function App() {
   const [count, setCount] = useState(0)
 
-  return <div className='bg-[url("src/assets/images/bg.jpeg")] h-screen w-screen bg-auto'>
+  return <div className='bg-[url("src/assets/images/bg.jpeg")] h-screen w-screen bg-cover bg-no-repeat'>
     <div className=" pb-4 bg-[#0000003a] h-28 mt-0 pt-0 ">
       <div className="flex justify-around pt-4  text-white font-bold   ">
         <div >
@@ -22,7 +22,7 @@ function App() {
       </div>
     </div>
 
-    <div className="mt-96 ml-40 p-0 gap-0">
+    <div className=" ml-24 p-0 gap-0 btns">
       <button className="text-black bg-white w-36 h-12 mr-0 text-xl font-semibold border-none hover:bg-[#0c0c0c] hover:text-white"
         style={{ borderTopLeftRadius: "14px", borderBottomLeftRadius: "14px" }}><a href="#"> Get Started </a></button>
       <button className="bg-[#ede3e327] text-white w-36 h-12 ml-0 text-xl font-semibold border-none hover:underline ease-out delay-1000"
