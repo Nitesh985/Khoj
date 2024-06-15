@@ -1,11 +1,11 @@
 import React from "react";
+import { RxCross2 } from "react-icons/rx";
  
-const Modal = ({ isOpen, onClose, children }) => {
+const Modal = ({ isOpen, onClose, children ,boxHeight=500, boxWidth=500 }) => {
     if (!isOpen) return null;
  
     return (
         <div
-            onClick={onClose}
             style={{
                 position: "fixed",
                 top: 0,
@@ -21,8 +21,8 @@ const Modal = ({ isOpen, onClose, children }) => {
             <div
                 style={{
                     background: "white",
-                    height: 150,
-                    width: 240,
+                    height: boxHeight,
+                    width: boxWidth,
                     margin: "auto",
                     padding: "2%",
                     border: "2px solid #000",
@@ -30,6 +30,9 @@ const Modal = ({ isOpen, onClose, children }) => {
                     boxShadow: "2px solid black",
                 }}
             >
+                <div className='flex justify-end'>
+            <RxCross2  className='hover:text-red-500 cursor-pointer' onClick={onClose} />
+        </div>
                 {children}
             </div>
         </div>

@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { FaUserCircle } from "react-icons/fa";
 import Modal from './Modal';
+import Login from './Login';
+import Register from './Register';
 
 function UserProfile() {
     const [open , setOpen] = useState(false);
@@ -15,15 +17,13 @@ function UserProfile() {
     return (
         <div
             style={{
-                textAlign: "center",
                 display: "block",
             }}>
                 <FaUserCircle className='cursor-pointer' onClick = {handleOpen} size={50}/>
                 
-                <Modal isOpen={open} onClose={handleClose}>
+                <Modal isOpen={open} onClose={handleClose} boxHeight="65vh" boxWidth="40vw" >
                     <>
-                        <h1>Im a modal</h1>
-                        <h3>Write anything in me</h3>
+                       <Login />
                     </>
                 </Modal>
         </div>
