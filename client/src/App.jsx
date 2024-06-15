@@ -7,7 +7,7 @@ import { CgProfile } from "react-icons/cg";
 function App() {
   const [count, setCount] = useState(0)
 
-  return <div className='bg-[url("src/assets/images/bg.jpeg")] h-screen w-screen bg-auto'>
+  return <div className='bg-[url("src/assets/images/bg.jpeg")] h-screen w-screen bg-cover'>
     <div className=" pb-4 bg-[#0000003a] h-28 mt-0 pt-0 ">
       <div className="flex justify-around pt-4  text-white font-bold   ">
         <div >

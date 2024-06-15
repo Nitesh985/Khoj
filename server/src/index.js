@@ -1,8 +1,8 @@
 import express from "express"
 import 'dotenv/config'
-import { connectToDB } from "./db"
+import { connectToDB } from "./db/index.js"
 const app = express()
-import { Category } from "./model/category.model"
+import { Category } from "./model/category.model.js"
 
 
 
@@ -36,5 +36,5 @@ connectToDB()
 
 })
 .catch(error=>{
-    console.log(error.message || "Mongodb connection failed")
+    console.log(error)
 })
