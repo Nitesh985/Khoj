@@ -1,11 +1,9 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { Link } from 'react-router-dom'
 import './App.css'
 import { CgProfile } from "react-icons/cg";
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <div className='bg-[url("src/assets/images/bg.jpeg")] h-screen w-screen bg-cover bg-no-repeat'>
@@ -20,13 +18,13 @@ function App() {
           </div>
           <div className="flex justify-evenly gap-20 mt-8 text-2xl  yeseva-one-regular">
             <h2 className="cursor-pointer hover:opacity-80 transition-opacity duration-200  ">
-              Explore
+              <Link to="/explore">Explore</Link>
             </h2>
             <h2 className="cursor-pointer hover:opacity-80 transition-opacity duration-200 ">
-              Popular
+              <Link to="/popular">Popular</Link>
             </h2>
             <h2 className="cursor-pointer hover:opacity-80 transition-opacity duration-200 ">
-              About us
+              <Link to="/about">About us</Link>
             </h2>
             <div className="group w-12 h-10">
               <CgProfile className=" w-12 h-10 cursor-pointer text-[#e0d6d6] hover:text-blue-500 transition-colors duration-300 ease-in-out "></CgProfile>
@@ -39,24 +37,28 @@ function App() {
       </div>
 
       <div className=" ml-24 p-0 gap-0 btns">
-        <button
-          className="text-black bg-white w-36 h-12 mr-0 text-xl font-semibold border-none hover:bg-[#0c0c0c] hover:text-white transition-color duration-300"
-          style={{
-            borderTopLeftRadius: "14px",
-            borderBottomLeftRadius: "14px",
-          }}
-        >
-          <a href="#"> Get Started </a>
-        </button>
-        <button
-          className="bg-[#ede3e327] text-white w-36 h-12 ml-0 text-xl font-semibold border-none hover:underline delay-1000"
-          style={{
-            borderTopRightRadius: "14px",
-            borderBottomRightRadius: "14px",
-          }}
-        >
-          <a href="#"> Learn More </a>
-        </button>
+        <Link to="/explore">
+          <button
+            className="text-black bg-white w-36 h-12 mr-0 text-xl font-semibold border-none hover:bg-[#0c0c0c] hover:text-white transition-color duration-300"
+            style={{
+              borderTopLeftRadius: "14px",
+              borderBottomLeftRadius: "14px",
+            }}
+          >
+            Get Started
+          </button>
+        </Link>
+        <Link to="/about">
+          <button
+            className="bg-[#ede3e327] text-white w-36 h-12 ml-0 text-xl font-semibold border-none hover:underline delay-1000"
+            style={{
+              borderTopRightRadius: "14px",
+              borderBottomRightRadius: "14px",
+            }}
+          >
+            Learn More
+          </button>
+        </Link>
       </div>
     </div>
   );
