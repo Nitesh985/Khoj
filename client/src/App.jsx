@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
@@ -9,41 +8,48 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <div className='bg-[url("src/assets/images/bg.jpeg")] h-screen w-screen bg-cover'>
-      <div className=" pb-4 bg-[#0000003a] h-28 mt-0 pt-0 ">
-        <div className="flex justify-around pt-4  text-white font-bold   ">
-          <div>
-            <h1 className="text-6xl ml-7">
-              <Link to="/" >Khoj</Link>
-            </h1>
+    <div className='bg-[url("src/assets/images/bg.jpeg")] h-screen w-screen bg-cover bg-no-repeat'>
+      <div className="bg-[#000000] bg-opacity-25 h-26 mt-0 pt-0 ">
+        <div className="flex justify-between ml-8 mr-8   text-white font-bold   ">
+          <div className="ml-12">
+            <img
+              src="src/assets/images/logo.png"
+              alt=""
+              className="h-28 w-30"
+            />
           </div>
-          <div className="flex justify-evenly gap-20 mt-5 text-2xl">
-            <h2 className="cursor-pointer hover:underline ease-out delay-1000 ">
-              <Link to="/explore" >Explore</Link>
+          <div className="flex justify-evenly gap-20 mt-8 text-2xl  yeseva-one-regular">
+            <h2 className="cursor-pointer hover:opacity-80 transition-opacity duration-200  ">
+              Explore
             </h2>
-            <h2 className="cursor-pointer hover:underline ease-out delay-1000">
-              <Link to="/popular" >Popular</Link>
+            <h2 className="cursor-pointer hover:opacity-80 transition-opacity duration-200 ">
+              Popular
             </h2>
-            <h2 className="cursor-pointer hover:underline ease-out delay-1000">
-              <Link to="/about" >About us</Link>
+            <h2 className="cursor-pointer hover:opacity-80 transition-opacity duration-200 ">
+              About us
             </h2>
-            <CgProfile className=" w-12 h-10 cursor-pointer text-[#e0d6d6] hover:text-blue" />
+            <div className="group w-12 h-10">
+              <CgProfile className=" w-12 h-10 cursor-pointer text-[#e0d6d6] hover:text-blue-500 transition-colors duration-300 ease-in-out "></CgProfile>
+              <div className="relative bg-gray-500 text-sm rounded-lg w-16 h-5 text-center font-normal mr-5 mt-1 group-hover:scale-100 scale-0 transition-transform duration-300 ease-linear">
+                Sign in
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="mt-96 ml-40 p-0 gap-0">
+      <div className=" ml-24 p-0 gap-0 btns">
         <button
-          className="text-black bg-white w-36 h-12 mr-0 text-xl font-semibold border-none hover:bg-[#0c0c0c] hover:text-white"
+          className="text-black bg-white w-36 h-12 mr-0 text-xl font-semibold border-none hover:bg-[#0c0c0c] hover:text-white transition-color duration-300"
           style={{
             borderTopLeftRadius: "14px",
             borderBottomLeftRadius: "14px",
           }}
         >
-          <Link to="/explore"> Get Started </Link>
+          <a href="#"> Get Started </a>
         </button>
         <button
-          className="bg-[#ede3e327] text-white w-36 h-12 ml-0 text-xl font-semibold border-none hover:underline ease-out delay-1000"
+          className="bg-[#ede3e327] text-white w-36 h-12 ml-0 text-xl font-semibold border-none hover:underline delay-1000"
           style={{
             borderTopRightRadius: "14px",
             borderBottomRightRadius: "14px",
@@ -54,6 +60,7 @@ function App() {
       </div>
     </div>
   );
+
 }
 
 export default App

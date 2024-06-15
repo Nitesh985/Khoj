@@ -10,21 +10,36 @@ import { uploadToCloudinary } from '../utils/cloudinary.js'
 const createDestination = asyncHandler(async (req, res)=> {
     const { name, description, category, location } = req.body
 
+    console.log(req.body)
+
     const destinationCategory = await Category.find({
         name:category
     })
+    console.log(destinationCategory)
 
     if (!destinationCategory){
         throw new ApiError(404, "The category was not found!")
     }
 
     const inputImages = req?.files
+    
+    if (!inputImages){
+        throw new ApiError(400, "The images were not found!")
+    }
 
     const images = []
     for (const img of inputImages){
-        const image = await uploadToCloudinary(img?.path)
-        images.push(image?.url)
+        const image = img?await uploadToCloudinary(img?.path):null
+        if (image){
+            images.push(image)
+        }
     }
+
+    if (!images?.length){
+        throw new ApiError(500, "Error while uploading the images to the ")
+    }
+
+    console.log(images)
 
 
     const destination = await Destination.create({
@@ -35,25 +50,56 @@ const createDestination = asyncHandler(async (req, res)=> {
         images
     })
 
+    console.log(destination)
+
     if (!destination){
-        throw new ApiResponse(501, "There was an error, saving the destination details", destination)
+        throw new ApiError(501, "There was an error, saving the destination details")
     }
 
     return res.status(200)
     .json(
-        new ApiResponse(200, "The destination was created successfully!")
+        new ApiResponse(200, "The destination was created successfully!", destination)
     )
 
 })
 
 
 const getAllDestinations = asyncHandler(async (req, res)=> {
-    const {page, limit} = req.query
+    const {page=1, limit=10} = req.query
 
+    const destinations = await Destination.aggregate([
+        {
+            $lookup:{
+                from:"likes",
+                foreignField:"destinationId",
+                localField:"_id",
+                as:"likes"
+            }
+        },
+        {
+            $addFields:{
+                likeCount:{
+                    $size:"$likes"
+                }
+            }
+        },
+        {
+            $lookup:{
+                from:"comments",
+                foreignField:"destinationId",
+                localField:"_id",
+                as:"comments"
+            }
+        },
+        {
+            $addFields:{
+                commentCount:{
+                    $size:"$comments"
+                }
+            }
+        },
+    ])
 
-    const destinations = await Destination.find({
-        from:""
-    })
 
     if (!destinations){
         throw new ApiError(501, "Error fetching the destinations, please try again later")
@@ -88,32 +134,65 @@ const getDestinationByCategory = asyncHandler(async(req, res)=>{
     }
     
     const destinations = await Category.aggregate([
-        {
-            $match:{
-                name: categoryName
-            }
+      {
+        $match: {
+          name: categoryName,
         },
-        {
-            $lookup:{
-                from:"destinations",
-                localField:"_id",
-                foreignField:"categoryId",
-                as:"destinations",
-                pipeline:[
-                    {
-                        $project:{
-                            _id:1,
-                            name:1,
-                            description:1,
-                            images:1,
-                            location:1
-                        }
-                    }
-                    
-                ]
-            }
-        }
-    ])
+      },
+      {
+        $lookup: {
+          from: "destinations",
+          localField: "_id",
+          foreignField: "categoryId",
+          as: "destinations",
+          pipeline: [
+            {
+              $lookup: {
+                from: "likes",
+                foreignField: "destinationId",
+                localField: "_id",
+                as: "likes",
+              },
+            },
+            {
+              $addFields: {
+                likeCount: {
+                  $size: "$likes",
+                },
+              },
+            },
+            {
+              $lookup: {
+                from: "comments",
+                foreignField: "destinationId",
+                localField: "_id",
+                as: "comments",
+              },
+            },
+            {
+              $addFields: {
+                commentCount: {
+                  $size: "$comments",
+                },
+              },
+            },
+            {
+              $project: {
+                _id: 1,
+                name: 1,
+                description: 1,
+                images: 1,
+                location: 1,
+                likes:1,
+                likeCount:1,
+                comments:1,
+                commentCount:1
+              },
+            },
+          ],
+        },
+      },
+    ]);
 
     if (!destinations?.length){
         throw new ApiError(404, "We couldn't fetch any destination!")

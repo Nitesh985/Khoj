@@ -13,9 +13,13 @@ const destinationSchema = new Schema({
         type: String,
         required: true
     },
+    images:{
+        type: [String],
+        required: true
+    },
     categoryId:{
         type: Schema.Types.ObjectId,
-        ref: "categories"
+        ref: "Category"
     }
 })
 
