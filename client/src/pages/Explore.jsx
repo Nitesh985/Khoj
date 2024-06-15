@@ -3,9 +3,10 @@ import Header from "../components/Header"
 
 function Explore() {
   return (
-    <div>
+    <>
         <Header/>
-    </div>
+    </>
+    
   
   )
 }
