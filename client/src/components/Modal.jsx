@@ -16,8 +16,7 @@ const Modal = ({ isOpen, onClose, children ,boxHeight=500, boxWidth=500 }) => {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-            }}
-        >
+            }} >
             <div
                 style={{
                     background: "white",
@@ -28,10 +27,11 @@ const Modal = ({ isOpen, onClose, children ,boxHeight=500, boxWidth=500 }) => {
                     border: "2px solid #000",
                     borderRadius: "10px",
                     boxShadow: "2px solid black",
+                    color:"black",
                 }}
             >
                 <div className='flex justify-end'>
-            <RxCross2  className='hover:text-red-500 cursor-pointer' onClick={onClose} />
+            <RxCross2  className='text-black hover:text-red-500 cursor-pointer' onClick={onClose} />
         </div>
                 {children}
             </div>

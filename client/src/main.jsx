@@ -12,14 +12,14 @@ import {
   createRoutesFromElements,
 } from "react-router-dom";
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/">
       <Route path="" element={<App />} />
       <Route path="explore" element={<Explore />} />
     </Route>
   )
-]);
+);
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
