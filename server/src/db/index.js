@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { dbName } from "../constant.js";
 
 
 const connectToDB = async() => {
@@ -7,7 +8,7 @@ const connectToDB = async() => {
         console.log("Mongodb connected successfully");
         return connection
     } catch (error) {
-        throw new Error("Mongodb connection failed")
+        throw error
     }
 }
 
