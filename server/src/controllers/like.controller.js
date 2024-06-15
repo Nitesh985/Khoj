@@ -79,3 +79,6 @@ const getLikedDestinations = asyncHandler(async (req, res)=>{
         }
     ])
 })
+
+
+export { toggleLike, toggleCommentLike, getLikedDestinations }

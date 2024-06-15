@@ -19,8 +19,19 @@ app.use(cookieParser())
 
 // routes
 import destinationRouter from './routes/destination.routes.js'
+import categoryRouter from './routes/category.routes.js'
+import likeRouter from './routes/like.routes.js'
+import userRouter from './routes/user.routes.js'
+import commentRouter from './routes/comment.routes.js'
+
+
+
 
 app.use("/api/v1/destination", destinationRouter)
+app.use("/api/v1/category", categoryRouter)
+app.use("/api/v1/like", likeRouter)
+app.use("/api/v1/user", userRouter)
+app.use("/api/v1/comment", commentRouter)
 
 
 export default app
