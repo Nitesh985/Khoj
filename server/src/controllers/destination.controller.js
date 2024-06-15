@@ -18,12 +18,12 @@ const createDestination = asyncHandler(async (req, res)=> {
         throw new ApiError(404, "The category was not found!")
     }
 
-    const inputImages = req.files
+    const inputImages = req?.files
 
     const images = []
     for (const img of inputImages){
-        const image = await uploadToCloudinary(img.path)
-        images.push(image.url)
+        const image = await uploadToCloudinary(img?.path)
+        images.push(image?.url)
     }
 
 
