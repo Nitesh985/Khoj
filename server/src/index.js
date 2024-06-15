@@ -1,7 +1,7 @@
 import express from "express"
 import 'dotenv/config'
 import { connectToDB } from "./db/index.js"
-const app = express()
+import app from "./app.js"
 import { Category } from "./model/category.model.js"
 
 
@@ -22,7 +22,7 @@ const port = process.env.PORT || 3000
 
 connectToDB()
 .then(async ()=>{
-    await Category.insertMany(categories)
+  
     
 })
 .then(()=>{

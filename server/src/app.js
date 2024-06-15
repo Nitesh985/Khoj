@@ -18,9 +18,9 @@ app.use(cookieParser())
 
 
 // routes
+import destinationRouter from './routes/destination.routes.js'
 
-
-
+app.use("/api/v1/destination", destinationRouter)
 
 
 export default app

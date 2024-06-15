@@ -17,6 +17,7 @@ const router = createBrowserRouter(
     <Route path="/">
       <Route path="" element={<App />} />
       <Route path="explore" element={<Explore />} />
+      <Route path="favourite" />
     </Route>
   )
 );
