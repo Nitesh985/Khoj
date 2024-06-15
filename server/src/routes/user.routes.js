@@ -1,13 +1,12 @@
 import { Router } from 'express'
-import { registerUser } from '../controllers/user.controller'
+import { registerUser, loginUser, logoutUser, refreshAccessToken } from '../controllers/user.controller'
 
 
 const router = Router()
 
 router
 .route("/sign-up")
-.post(upload.file['avatar'], registerUser)
-
+.post(upload.single('avatar'), registerUser)
 
 router
 .route("/sign-in")
