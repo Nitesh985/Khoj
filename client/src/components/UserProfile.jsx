@@ -19,7 +19,7 @@ function UserProfile() {
             style={{
                 display: "block",
             }}>
-                <FaUserCircle className='cursor-pointer' onClick = {handleOpen} size={50}/>
+                <FaUserCircle className='cursor-pointer ' color='grey' onClick = {handleOpen} size={50}/>
                 
                 <Modal isOpen={open} onClose={handleClose} boxHeight="65vh" boxWidth="40vw" >
                     <>
