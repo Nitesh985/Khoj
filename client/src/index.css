@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 .yeseva-one-regular {
     font-family: "Yeseva One", serif;
     font-weight: 400;
@@ -8,5 +9,7 @@
   }
   .btns{
     margin-top: 64vh;
+
   }
   
+  }

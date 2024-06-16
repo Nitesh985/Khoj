@@ -3,6 +3,7 @@ import 'dotenv/config'
 import { connectToDB } from "./db/index.js"
 import app from "./app.js"
 import { Category } from "./model/category.model.js"
+import { Destination } from "./model/destination.model.js"
 
 
 
@@ -21,10 +22,6 @@ const categories = [
 const port = process.env.PORT || 3000
 
 connectToDB()
-.then(async ()=>{
-  
-    
-})
 .then(()=>{
     app.get('/', (req, res) => {
       res.send('RepoSphere')

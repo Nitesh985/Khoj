@@ -4,11 +4,11 @@ import { Schema, model } from 'mongoose'
 const commentSchema = new Schema({
     destinationId:{
         type: Schema.Types.ObjectId,
-        ref: "destinations"
+        ref: "Destination"
     },
     userId:{
         type: Schema.Types.ObjectId,
-        ref: "users"
+        ref: "User"
     }
 }, {timestamps:true})
 
