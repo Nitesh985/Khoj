@@ -1,7 +1,7 @@
-import { Destination } from "../model/destination.model";
-import { Like } from "../model/like.model";
-import { ApiError } from "../utils/ApiError";
-import { asyncHandler } from "../utils/asyncHandler";
+import { Destination } from "../model/destination.model.js";
+import { Like } from "../model/like.model.js";
+import { ApiError } from "../utils/ApiError.js";
+import { asyncHandler } from "../utils/asyncHandler.js";
 
 const toggleLike = asyncHandler(async (req, res)=>{
     const userId = req.user?._id
