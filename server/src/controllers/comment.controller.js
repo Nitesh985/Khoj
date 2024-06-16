@@ -1,4 +1,5 @@
 import { Comment } from "../model/comment.model.js";
+import { ApiResponse } from "../utils/ApiResponse.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 
 const createComment = asyncHandler(async(req, res)=>{
@@ -21,7 +22,31 @@ const createComment = asyncHandler(async(req, res)=>{
     if (!comment){
         throw new ApiError(500, "Something went wrong, saving the comment")
     }
+
+    return res.status(200)
+    .json(
+        new ApiResponse(200, "The comment was created successfully!", comment)
+    )
 })
 
 
-// const 
+const getAllComments = asyncHandler(async (req, res)=>{
+    const {destinationId} = req.params
+
+    if (!destinationId){
+        throw new ApiError(400, "The destination was not given")
+    }
+
+    const comments = await Comment.find({destinationId})
+
+    if (!comments){
+        throw new ApiError(500, "Something went wrong fetching the comments")
+    }
+
+    return res.status(200)
+    .json(
+        new ApiResponse(200, "The comments were fetched successfully", comments)
+    )
+})
+
+export {createComment, getAllComments}

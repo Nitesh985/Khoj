@@ -15,7 +15,7 @@ const registerUser = asyncHandler(async (req, res)=>{
         }
     }
 
-    const avatarFile = req.file
+    const avatarFile = req?.file?.path
 
     const avatar = avatarFile? await uploadToCloudinary(avatarFile):null
 

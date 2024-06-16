@@ -6,10 +6,9 @@ import Popular from './pages/Popular.jsx'
 import About from './pages/About.jsx'
 import Favorite from './pages/Favorite.jsx'
 import Profile from './pages/Profile.jsx'
+import Register from './components/Register.jsx'
+import Login from './components/Login.jsx'
 import './index.css'
-
-
-import * as React from "react";
 import {
   createBrowserRouter,
   RouterProvider,
@@ -17,8 +16,8 @@ import {
   Link,
   createRoutesFromElements,
 } from "react-router-dom";
-import Register from './components/Register.jsx'
-import Login from './components/Login.jsx'
+
+
 
 const router = createBrowserRouter(
   createRoutesFromElements(
