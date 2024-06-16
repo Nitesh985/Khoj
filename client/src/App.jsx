@@ -8,6 +8,10 @@ import { CgProfile } from "react-icons/cg";
 import Header from './components/Header';
 import Modal from './components/Modal';
 import Login from './components/Login';
+import FirstLogin from './components/FirstLogin'
+import ModelFront from './components/ModelFront'
+import InputBox from './components/InputBox'
+import Register from './components/Register'
 
 function App() {
   const [open , setOpen] = useState(false);
@@ -38,7 +42,12 @@ function App() {
             <h2 className="cursor-pointer hover:underline ease-out delay-1000">
               <Link to="/about" >About us</Link>
             </h2>
-            <CgProfile className=" w-12 h-10 cursor-pointer text-[#e0d6d6] hover:text-blue" />
+            <CgProfile className=" w-12 h-10 cursor-pointer text-[#e0d6d6] hover:text-blue" onClick={handleOpen}/>
+            <ModelFront isOpen={open} onClose={handleClose} boxHeight="70vh" boxWidth="35vw" >
+                    <>
+                       <Login/>
+                    </>
+                </ModelFront>
           </div>
 
         </div>
@@ -46,7 +55,7 @@ function App() {
       </div>
 
 
-      <div className="mt-96 ml-40 p-0 gap-0">
+      <div className="btns ml-40 p-0 gap-0">
         <button
           className="text-black bg-white w-36 h-12 mr-0 text-xl font-semibold border-none hover:bg-[#0c0c0c] hover:text-white"
           style={{

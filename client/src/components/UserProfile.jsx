@@ -21,9 +21,9 @@ function UserProfile() {
             }}>
                 <FaUserCircle className='cursor-pointer' onClick = {handleOpen} size={50}/>
                 
-                <Modal isOpen={open} onClose={handleClose} boxHeight="65vh" boxWidth="40vw" >
+                <Modal isOpen={open} onClose={handleClose} boxHeight="65vh" boxWidth="40vw" className='bg-slate-400' >
                     <>
-                       <Login />
+                      <Login/>
                     </>
                 </Modal>
         </div>
