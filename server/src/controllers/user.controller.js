@@ -10,7 +10,7 @@ const registerUser = asyncHandler(async (req, res)=>{
     const reqFields = ["username", "email", "password", "location"]
 
     for (const field of reqFields){
-        if (!req.body(field)){
+        if (!req.body[field]){
             throw new ApiError(400, `${field} field is a required field!`)
         }
     }

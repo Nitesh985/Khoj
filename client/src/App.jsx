@@ -6,12 +6,12 @@ import { CgProfile } from "react-icons/cg";
 function App() {
 
   return (
-    <div className='bg-[url("src/components/images/bg.jpeg")] h-screen w-screen bg-cover bg-no-repeat'>
+    <div className='bg-[url("src/assets/images/bg.jpeg")] h-screen w-screen bg-cover bg-no-repeat'>
       <div className="bg-[#000000] bg-opacity-25 h-26 mt-0 pt-0 ">
         <div className="flex justify-between ml-8 mr-8   text-white font-bold   ">
           <div className="ml-12">
             <img
-              src="src/components/images/logo.png"
+              src="src/assets/images/logo.png"
               alt=""
               className="h-28 w-30"
             />

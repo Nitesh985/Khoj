@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import profile from "./images/luca.jpg"
+import profile from "../assets/images/luca.jpg"
 function Test() {
     return (
 
