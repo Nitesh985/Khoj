@@ -2,8 +2,17 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import './App.css'
 import { CgProfile } from "react-icons/cg";
-
+import Modal from './components/Modal';
+import Login from './components/Login';
 function App() {
+  const [open , setOpen] = useState(false);
+    const handleClose = () => {
+        setOpen(false);
+    };
+ 
+    const handleOpen = () => {
+        setOpen(true);
+    };
 
   return (
     <div className='bg-[url("src/assets/images/bg.jpeg")] h-screen w-screen bg-cover bg-no-repeat'>
@@ -27,7 +36,12 @@ function App() {
               <Link to="/about">About us</Link>
             </h2>
             <div className="group w-12 h-10">
-              <CgProfile className=" w-12 h-10 cursor-pointer text-[#e0d6d6] hover:text-blue-500 transition-colors duration-300 ease-in-out "></CgProfile>
+              <CgProfile className=" w-12 h-10 cursor-pointer text-[#e0d6d6] hover:text-blue-500 transition-colors duration-300 ease-in-out "  onClick = {handleOpen}></CgProfile>
+              <Modal isOpen={open} onClose={handleClose} boxHeight="70vh" boxWidth="40vw" >
+                    <>
+                       <Login />
+                    </>
+                </Modal>
               <div className="relative bg-gray-500 text-sm rounded-lg w-16 h-5 text-center font-normal mr-5 mt-1 group-hover:scale-100 scale-0 transition-transform duration-300 ease-linear">
                 Sign in
               </div>

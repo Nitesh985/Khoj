@@ -1,5 +1,6 @@
 import { Comment } from "../model/comment.model.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
+import { ApiError } from "../utils/ApiError.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 
 const createComment = asyncHandler(async(req, res)=>{
@@ -36,6 +37,8 @@ const getAllComments = asyncHandler(async (req, res)=>{
     if (!destinationId){
         throw new ApiError(400, "The destination was not given")
     }
+
+    console.log(destinationId)
 
     const comments = await Comment.find({destinationId})
 

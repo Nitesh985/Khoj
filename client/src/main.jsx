@@ -8,6 +8,8 @@ import Favorite from './pages/Favorite.jsx'
 import Profile from './pages/Profile.jsx'
 import Register from './components/Register.jsx'
 import Login from './components/Login.jsx'
+import MainPage from './components/MainPage.jsx'
+import Layout from './components/Layout.jsx'
 import './index.css'
 import {
   createBrowserRouter,
@@ -26,7 +28,11 @@ const router = createBrowserRouter(
         <Route path="sign-up" element={<Register />} />
         <Route path="sign-in" element={<Login />} />
       </Route>
-      <Route path="/explore" element={<Explore />}/>
+      <Route path="/explore/" element={<Layout />}>
+        <Route path="" element={<Explore />}/>
+        <Route path="d/:destinationId" element={<MainPage />} />
+      </Route>
+
       <Route path="/popular" element={<Popular />}/>
       <Route path="/favorite" element={<Favorite />}/>
       <Route path="/about" element={<About />}/>

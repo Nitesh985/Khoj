@@ -10,12 +10,10 @@ import { uploadToCloudinary } from '../utils/cloudinary.js'
 const createDestination = asyncHandler(async (req, res)=> {
     const { name, description, category, location } = req.body
 
-    console.log(req.body)
 
-    const destinationCategory = await Category.find({
+    const destinationCategory = await Category.findOne({
         name:category
     })
-    console.log(destinationCategory)
 
     if (!destinationCategory){
         throw new ApiError(404, "The category was not found!")
@@ -39,8 +37,6 @@ const createDestination = asyncHandler(async (req, res)=> {
         throw new ApiError(500, "Error while uploading the images to the ")
     }
 
-    console.log(images)
-
 
     const destination = await Destination.create({
         name,
@@ -50,7 +46,6 @@ const createDestination = asyncHandler(async (req, res)=> {
         images
     })
 
-    console.log(destination)
 
     if (!destination){
         throw new ApiError(501, "There was an error, saving the destination details")
@@ -59,6 +54,26 @@ const createDestination = asyncHandler(async (req, res)=> {
     return res.status(200)
     .json(
         new ApiResponse(200, "The destination was created successfully!", destination)
+    )
+
+})
+
+const getDestinationById = asyncHandler(async (req, res)=>{
+    const { destinationId } = req.params
+
+    if (!destinationId){
+        throw new ApiError(404, "The destination id was not found")
+    }
+
+    const destinations = await Destination.findById(destinationId)
+
+    if (!destinations){
+        throw new ApiError(500, "Something went wrong fetching the destinations")
+    }
+
+    return res.status(200)
+    .json(
+        new ApiResponse(200, "The destination was fetched successfully", destinations)
     )
 
 })
@@ -129,6 +144,8 @@ const getAllDestinations = asyncHandler(async (req, res)=> {
 const getDestinationByCategory = asyncHandler(async(req, res)=>{
     const {categoryName} = req.params
 
+    console.log(categoryName)
+
     if (!categoryName){
         throw new ApiError(400, "The category name was not given!")
     }
@@ -194,6 +211,8 @@ const getDestinationByCategory = asyncHandler(async(req, res)=>{
       },
     ]);
 
+    console.log(destinations)
+
     if (!destinations?.length){
         throw new ApiError(404, "We couldn't fetch any destination!")
     }
@@ -252,4 +271,4 @@ const searchDestination = asyncHandler(async (req, res)=>{
 
 
 
-export { createDestination, getAllDestinations, getDestinationByCategory, searchDestination }
+export { createDestination, getAllDestinations, getDestinationByCategory, searchDestination, getDestinationById }

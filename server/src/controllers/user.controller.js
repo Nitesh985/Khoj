@@ -4,6 +4,24 @@ import { ApiResponse } from "../utils/ApiResponse.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { uploadToCloudinary } from "../utils/cloudinary.js";
 
+const generateAccessAndRefreshToken = async(userId) => {
+    try {
+       const user = await User.findById(userId)
+       
+       const accessToken = user.generateAccessToken()
+       const refreshToken = user.generateRefreshToken()
+
+       user.refreshToken = refreshToken
+       await user.save({validateBeforeSave:false})
+
+        return {accessToken, refreshToken}
+
+    } catch (error) {
+        throw new Error("Error while generating the access and refresh token")
+    }
+}
+
+
 const registerUser = asyncHandler(async (req, res)=>{
     const {username, email, password, location} = req.body
 
@@ -73,7 +91,9 @@ const loginUser = asyncHandler(async (req, res)=>{
     .cookie("accessToken", accessToken, options)
     .cookie("refreshToken", refreshToken, options)
     .json(
-        new ApiResponse(200, "The user is logged in successfully")
+        new ApiResponse(200, "The user is logged in successfully", user
+            
+        )
     )
 })
 

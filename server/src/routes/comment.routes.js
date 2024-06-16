@@ -8,7 +8,7 @@ const router = Router()
 router.route("/create-comment/:destinationId")
 .post(verifyUser, createComment)
 
-router.route("/get-all-comments")
+router.route("/get-all-comments/:destinationId")
 .get(getAllComments)
 
 export default router

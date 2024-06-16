@@ -1,9 +1,12 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import profile from "../assets/images/luca.jpg"
 import Swipe from './Swipe';
+import GetDestinationByCategory from './Destination/GetDestinationByCategory';
+import axios from 'axios'
+
 
 function Destination() {
-
+  
 
 
   return (

@@ -21,6 +21,8 @@ const categories = [
 
 const port = process.env.PORT || 3000
 
+
+
 connectToDB()
 .then(()=>{
     app.get('/', (req, res) => {

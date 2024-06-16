@@ -1,6 +1,8 @@
 import { Router } from 'express'
 import { registerUser, loginUser, logoutUser, refreshAccessToken } from '../controllers/user.controller.js'
 import { upload } from '../middlewares/multer.middleware.js'
+import { verifyUser } from '../middlewares/auth.middleware.js'
+
 
 const router = Router()
 
@@ -14,7 +16,7 @@ router
 
 router
 .route("/sign-out")
-.post(logoutUser)
+.post(verifyUser, logoutUser)
 
 
 router

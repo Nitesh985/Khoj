@@ -2,13 +2,15 @@ import React from 'react'
 import UserProfile from './UserProfile'
 import { CiSearch } from "react-icons/ci";
 import Hero from './Hero';
+import logo from '../assets/images/logoblack.png'
+
 
 function Header() {
   return (
     <>
       <div 
        className="bg-[#d9d9d977] flex justify-between h-30% w-full">
-        <img src="src/components/images/logoblack.png" className='h-20 ml-6' alt="" />
+        <img src={logo} className='h-20 ml-6' alt="" />
         <div className="flex justify-center items-center gap-3">
           <input type="search" placeholder="Search here..." className="w-80 h-12 indent-5 rounded-xl" />
           <div className="bg-white h-12 w-14 flex justify-center items-center rounded-xl cursor-pointer">
@@ -20,9 +22,6 @@ function Header() {
         </div>
       </div>
 
-      <div>
-        <Hero />
-      </div>
     </>
   )
 }

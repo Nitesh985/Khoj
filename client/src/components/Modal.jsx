@@ -28,6 +28,7 @@ const Modal = ({ isOpen, onClose, children ,boxHeight=500, boxWidth=500 }) => {
                     border: "2px solid #000",
                     borderRadius: "10px",
                     boxShadow: "2px solid black",
+                    color:"black",
                 }}
             >
                 <div className='flex justify-end'>
